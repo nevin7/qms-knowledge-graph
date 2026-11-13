@@ -1,7 +1,7 @@
 """Human-in-the-loop review: only confirmed links enter the graph.
 
 Triage rules (thresholds are adjustable):
-    confidence >= auto      -> accepted automatically (still written to the audit log)
+    confidence >= auto      -> accepted automatically
     review <= conf < auto   -> goes to the review queue for a person to accept or reject
     confidence < review     -> discarded
 """
