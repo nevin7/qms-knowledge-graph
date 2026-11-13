@@ -1,0 +1,22 @@
+# Competency question 4: show the history of a product across deviations, investigations, and CAPA.
+PREFIX qms:  <http://example.org/qms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?product ?site ?recordId ?kind
+WHERE {
+  # GraphDB version: this line sets ?term, which the Python pipeline normally binds.
+  VALUES ?term { "cardiostat 20" }
+  ?prod a qms:Product ;
+        (skos:prefLabel|skos:altLabel) ?label ;
+        skos:prefLabel ?product .
+  FILTER(LCASE(STR(?label)) = LCASE(STR(?term)))
+  ?dev qms:aboutProduct ?prod .
+  ?rec (qms:correctiveActionFor/qms:investigates | qms:investigates)? ?dev ;
+       qms:recordId ?recordId ;
+       qms:occurredAt ?siteNode ;
+       a ?type .
+  ?siteNode rdfs:label ?site .
+  VALUES (?type ?kind) { (qms:Deviation "Deviation") (qms:Investigation "Investigation") (qms:CAPA "CAPA") }
+}
+ORDER BY ?recordId

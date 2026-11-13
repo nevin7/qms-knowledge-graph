@@ -1,0 +1,6 @@
+record_id,entity_id,kind,mention,confidence,method,note
+DEV-0010,EQ-N-TP04,equipment,pres 4,0.88,fuzzy,close spelling to 'press 4' (similarity 0.92)
+DEV-0012,EQ-N-CP02,equipment,coatin pan 2,0.89,fuzzy,close spelling to 'coating pan 2' (similarity 0.96)
+DEV-0014,EQ-S-AC07,equipment,autoclav 7,0.89,fuzzy,close spelling to 'autoclave 7' (similarity 0.95)
+DEV-0016,EQ-S-AI01,equipment,assembly line one,0.83,fuzzy,close spelling to 'assembly line 1' (similarity 0.88)
+DEV-0017,EQ-N-CP02,equipment,coat pan 2,0.7,exact,equipment is at a different site than the record; confirm

@@ -1,0 +1,38 @@
+record_id,record_type,site_id,opened_on,title,description,parent_id
+DEV-0001,Deviation,SITE-N,2026-01-12,Tablet weight drift,Tablet weight drifted outside the in-process limit during a compression run on press 4; run paused and samples pulled for cardiostat 20.,
+DEV-0002,Deviation,SITE-E,2026-01-19,Tablet weight drift,Tablet weight drifted outside the in-process limit during a compression run on press 4; run paused and samples pulled for CST-40.,
+DEV-0003,Deviation,SITE-N,2026-02-03,Coating variability,Coating thickness variability observed in coat pan 2; spray rate adjusted for Cardiostat 20 mg tablet.,
+DEV-0004,Deviation,SITE-N,2026-02-10,Viscosity out of range,Viscosity was outside specification after mixing in mixer 11; batch placed on hold for Dermacalm 1% cream.,
+DEV-0005,Deviation,SITE-S,2026-02-17,Viscosity out of range,Viscosity was outside specification after mixing in mixer 11; batch placed on hold for dermacalm cream.,
+DEV-0006,Deviation,SITE-E,2026-02-24,Coat weight variation,Adhesive coat weight varied along the roll from patch line 3; line stopped for inspection for AGX-25.,
+DEV-0007,Deviation,SITE-E,2026-03-03,Cycle did not reach set point,Load temperature did not reach the set point during a sterilization cycle in autoclave 7; cycle aborted.,
+DEV-0008,Deviation,SITE-S,2026-03-10,Cycle did not reach set point,Load temperature did not reach the set point during a sterilization cycle in AC-07; cycle aborted for alleject pen.,
+DEV-0009,Deviation,SITE-S,2026-03-17,Assembly jam,Assembly jam on assembly line 1; operator cleared the jam and logged it for ALJ-AI.,
+DEV-0010,Deviation,SITE-N,2026-03-24,Tablet weight drift,Tablet weight drifted outside the in-process limit during a compression run on tablet pres 4; run paused and samples pulled for cardiostat tabs.,
+DEV-0011,Deviation,SITE-E,2026-04-01,Coat weight variation,Adhesive coat weight varied along the roll from coating line 3; line stopped for inspection for analgex patch.,
+DEV-0012,Deviation,SITE-N,2026-04-08,Coating variability,Coating thickness variability observed in coatin pan 2; spray rate adjusted for cardiostat 40.,
+DEV-0013,Deviation,SITE-E,2026-04-15,Tablet weight drift,Tablet weight drifted outside the in-process limit during a compression run on TP-04; run paused and samples pulled for CST-20.,
+DEV-0014,Deviation,SITE-S,2026-04-22,Cycle did not reach set point,Load temperature did not reach the set point during a sterilization cycle in autoclav 7; cycle aborted.,
+DEV-0015,Deviation,SITE-N,2026-04-29,Viscosity out of range,Viscosity was outside specification after mixing in cream mixer 11; batch placed on hold for DCC-1.,
+DEV-0016,Deviation,SITE-S,2026-05-06,Assembly jam,Assembly jam on assembly line one; operator cleared the jam and logged it.,
+DEV-0017,Deviation,SITE-E,2026-05-13,Coating variability (reference),Coating thickness variability seen on a small batch at Plant East. A similar issue was reported earlier on coat pan 2 at Plant North for cardiostat 20.,
+INV-0001,Investigation,SITE-N,2026-01-19,Investigation of DEV-0001,Findings on tab press 4: Worn feed frame suspected as the cause of the weight drift.,DEV-0001
+INV-0002,Investigation,SITE-E,2026-01-26,Investigation of DEV-0002,Findings on TP-04: Powder flow change in the incoming lot is the leading explanation.,DEV-0002
+INV-0003,Investigation,SITE-N,2026-02-10,Investigation of DEV-0003,Findings on CP-02: Spray nozzle partially blocked; cleaning record under review.,DEV-0003
+INV-0004,Investigation,SITE-N,2026-02-17,Investigation of DEV-0004,Findings on MV-11: Mixing time was shortened by a recipe edit.,DEV-0004
+INV-0005,Investigation,SITE-S,2026-02-24,Investigation of DEV-0005,Findings on cream mixer 11: Temperature probe drift is being checked.,DEV-0005
+INV-0006,Investigation,SITE-E,2026-03-03,Investigation of DEV-0006,Findings on PL-03: Coating head gap found outside tolerance.,DEV-0006
+INV-0007,Investigation,SITE-S,2026-03-17,Investigation of DEV-0008,Findings on autoclave 7: Steam supply pressure was low during the cycle.,DEV-0008
+INV-0008,Investigation,SITE-S,2026-03-24,Investigation of DEV-0009,Findings on AI-01: Feeder bowl vibration setting changed after maintenance.,DEV-0009
+INV-0009,Investigation,SITE-N,2026-03-31,Investigation of DEV-0010,Findings on press 4: Same feed frame wear as an earlier investigation.,DEV-0010
+INV-0010,Investigation,SITE-N,2026-04-15,Investigation of DEV-0012,Findings on coating pan 2: Air handling unit alarm was active during the run.,DEV-0012
+INV-0011,Investigation,SITE-E,2026-04-22,Investigation of DEV-0013,Findings on tab press 4: No equipment fault found; operator setup being reviewed.,DEV-0013
+INV-0012,Investigation,SITE-N,2026-05-06,Investigation of DEV-0015,Findings on mixer 11: Paddle speed log shows a setpoint change.,DEV-0015
+CAPA-0001,CAPA,SITE-N,2026-02-02,Corrective action,Replace the feed frame and add it to the preventive maintenance schedule.,INV-0001
+CAPA-0002,CAPA,SITE-E,2026-02-09,Corrective action,Add an incoming powder flow check before compression.,INV-0002
+CAPA-0003,CAPA,SITE-N,2026-03-03,Corrective action,Lock the mixing time in the recipe so edits need approval.,INV-0004
+CAPA-0004,CAPA,SITE-E,2026-03-17,Corrective action,Reset the coating head gap and add a gap check to line startup.,INV-0006
+CAPA-0005,CAPA,SITE-S,2026-03-31,Corrective action,Add a steam pressure check before each sterilization cycle.,INV-0007
+CAPA-0006,CAPA,SITE-S,2026-04-07,Corrective action,Add a vibration setting check to the post-maintenance checklist.,INV-0008
+CAPA-0007,CAPA,SITE-N,2026-04-29,Corrective action,Service the air handling unit and review the alarm response procedure.,INV-0010
+CAPA-0008,CAPA,SITE-E,2026-06-03,Corrective action,Review the training record for the line operators.,INV-9999

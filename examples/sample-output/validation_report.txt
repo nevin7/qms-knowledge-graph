@@ -1,0 +1,2 @@
+Conforms: False
+- CAPA-0008: Every CAPA must point to at least one investigation.

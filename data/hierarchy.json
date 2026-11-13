@@ -1,0 +1,93 @@
+{
+  "nodes": [
+    {
+      "id": "AREA-N-SD",
+      "label": "Solid Dose Area",
+      "kind": "Area",
+      "parent": "SITE-N"
+    },
+    {
+      "id": "LINE-N-CMP1",
+      "label": "Compression Line 1",
+      "kind": "Line",
+      "parent": "AREA-N-SD"
+    },
+    {
+      "id": "LINE-N-CT1",
+      "label": "Coating Line 1",
+      "kind": "Line",
+      "parent": "AREA-N-SD"
+    },
+    {
+      "id": "AREA-N-SS",
+      "label": "Semi-Solids Area",
+      "kind": "Area",
+      "parent": "SITE-N"
+    },
+    {
+      "id": "LINE-N-CR1",
+      "label": "Cream Line 1",
+      "kind": "Line",
+      "parent": "AREA-N-SS"
+    },
+    {
+      "id": "AREA-E-SD",
+      "label": "Solid Dose Area",
+      "kind": "Area",
+      "parent": "SITE-E"
+    },
+    {
+      "id": "LINE-E-CMP1",
+      "label": "Compression Line 1",
+      "kind": "Line",
+      "parent": "AREA-E-SD"
+    },
+    {
+      "id": "AREA-E-TD",
+      "label": "Transdermal Area",
+      "kind": "Area",
+      "parent": "SITE-E"
+    },
+    {
+      "id": "AREA-E-ST",
+      "label": "Sterilization Area",
+      "kind": "Area",
+      "parent": "SITE-E"
+    },
+    {
+      "id": "AREA-S-SS",
+      "label": "Semi-Solids Area",
+      "kind": "Area",
+      "parent": "SITE-S"
+    },
+    {
+      "id": "LINE-S-CR1",
+      "label": "Cream Line 1",
+      "kind": "Line",
+      "parent": "AREA-S-SS"
+    },
+    {
+      "id": "AREA-S-ST",
+      "label": "Sterilization Area",
+      "kind": "Area",
+      "parent": "SITE-S"
+    },
+    {
+      "id": "AREA-S-DA",
+      "label": "Device Assembly Area",
+      "kind": "Area",
+      "parent": "SITE-S"
+    }
+  ],
+  "equipment_parent": {
+    "EQ-N-TP04": "LINE-N-CMP1",
+    "EQ-N-CP02": "LINE-N-CT1",
+    "EQ-N-MV11": "LINE-N-CR1",
+    "EQ-E-TP04": "LINE-E-CMP1",
+    "EQ-E-PL03": "AREA-E-TD",
+    "EQ-E-AC07": "AREA-E-ST",
+    "EQ-S-MV11": "LINE-S-CR1",
+    "EQ-S-AC07": "AREA-S-ST",
+    "EQ-S-AI01": "AREA-S-DA"
+  }
+}

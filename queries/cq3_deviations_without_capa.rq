@@ -1,0 +1,16 @@
+# Competency question 3: which deviations have no corrective action (CAPA) yet?
+PREFIX qms:  <http://example.org/qms#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?recordId ?site
+WHERE {
+  ?dev a qms:Deviation ;
+       qms:recordId ?recordId ;
+       qms:occurredAt ?siteNode .
+  ?siteNode rdfs:label ?site .
+  FILTER NOT EXISTS {
+    ?inv qms:investigates ?dev .
+    ?capa qms:correctiveActionFor ?inv .
+  }
+}
+ORDER BY ?recordId

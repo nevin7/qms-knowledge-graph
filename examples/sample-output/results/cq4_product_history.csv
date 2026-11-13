@@ -1,0 +1,11 @@
+product,site,recordId,kind
+Cardiostat 20 mg tablet,Plant North,CAPA-0001,CAPA
+Cardiostat 20 mg tablet,Plant North,DEV-0001,Deviation
+Cardiostat 20 mg tablet,Plant North,DEV-0003,Deviation
+Cardiostat 20 mg tablet,Plant North,DEV-0010,Deviation
+Cardiostat 20 mg tablet,Plant East,DEV-0013,Deviation
+Cardiostat 20 mg tablet,Plant East,DEV-0017,Deviation
+Cardiostat 20 mg tablet,Plant North,INV-0001,Investigation
+Cardiostat 20 mg tablet,Plant North,INV-0003,Investigation
+Cardiostat 20 mg tablet,Plant North,INV-0009,Investigation
+Cardiostat 20 mg tablet,Plant East,INV-0011,Investigation

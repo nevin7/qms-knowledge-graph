@@ -1,0 +1,49 @@
+@prefix qms:  <http://example.org/qms#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/qms> a owl:Ontology ;
+    rdfs:label "Quality Records Demo Ontology (synthetic)" ;
+    rdfs:comment "A small ontology for linking quality records (deviations, investigations, CAPA) to products, equipment, and sites. All data in this project is synthetic." .
+
+# ---- Classes -------------------------------------------------------
+qms:QualityRecord a owl:Class ; rdfs:label "Quality record" .
+qms:Deviation     a owl:Class ; rdfs:subClassOf qms:QualityRecord ; rdfs:label "Deviation" .
+qms:Investigation a owl:Class ; rdfs:subClassOf qms:QualityRecord ; rdfs:label "Investigation" .
+qms:CAPA          a owl:Class ; rdfs:subClassOf qms:QualityRecord ; rdfs:label "Corrective and preventive action (CAPA)" .
+qms:Product       a owl:Class ; rdfs:subClassOf skos:Concept ; rdfs:label "Product" .
+qms:Equipment     a owl:Class ; rdfs:subClassOf skos:Concept ; rdfs:label "Equipment" .
+qms:Site          a owl:Class ; rdfs:label "Site" .
+qms:Area a owl:Class ; rdfs:label "Area" .
+qms:Line a owl:Class ; rdfs:label "Production line" .
+qms:Area owl:disjointWith qms:Line , qms:Site .
+qms:Line owl:disjointWith qms:Site .
+qms:Deviation owl:disjointWith qms:Investigation , qms:CAPA .
+qms:Investigation owl:disjointWith qms:CAPA .
+
+# ---- Object properties ---------------------------------------------
+qms:occurredAt a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain qms:QualityRecord ; rdfs:range qms:Site ;
+    rdfs:comment "The site where the record was raised." .
+qms:aboutProduct a owl:ObjectProperty ;
+    rdfs:domain qms:QualityRecord ; rdfs:range qms:Product ;
+    rdfs:comment "A product the record concerns. Only confirmed links are stored." .
+qms:aboutEquipment a owl:ObjectProperty ;
+    rdfs:domain qms:QualityRecord ; rdfs:range qms:Equipment ;
+    rdfs:comment "A piece of equipment the record concerns. Only confirmed links are stored." .
+qms:investigates a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain qms:Investigation ; rdfs:range qms:Deviation .
+qms:correctiveActionFor a owl:ObjectProperty ;
+    rdfs:domain qms:CAPA ; rdfs:range qms:Investigation .
+qms:equipmentAt a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain qms:Equipment ; rdfs:range qms:Site .
+qms:partOf a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:comment "Physical containment: equipment is part of a line or area, a line is part of an area, and an area is part of a site." .
+
+# ---- Datatype properties -------------------------------------------
+qms:recordId      a owl:DatatypeProperty ; rdfs:domain qms:QualityRecord ; rdfs:range xsd:string .
+qms:openedOn      a owl:DatatypeProperty ; rdfs:domain qms:QualityRecord ; rdfs:range xsd:date .
+qms:description   a owl:DatatypeProperty ; rdfs:domain qms:QualityRecord ; rdfs:range xsd:string .
+qms:equipmentType a owl:DatatypeProperty ; rdfs:domain qms:Equipment ; rdfs:range xsd:string .

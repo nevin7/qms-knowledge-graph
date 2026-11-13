@@ -1,0 +1,5 @@
+record_id,entity_id,decision,reviewer_note
+DEV-0010,EQ-N-TP04,accept,Typo of 'press 4' at Plant North
+DEV-0012,EQ-N-CP02,accept,Typo of 'coating pan 2' at Plant North
+DEV-0014,EQ-S-AC07,accept,Typo of 'autoclave 7' at Plant South
+DEV-0017,EQ-N-CP02,reject,Reference to another site's equipment; not the equipment involved in this record

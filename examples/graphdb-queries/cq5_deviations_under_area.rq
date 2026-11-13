@@ -1,0 +1,25 @@
+# Competency question 5: show me every deviation anywhere under an area or line, whatever machine it was tagged to.
+# ?term is bound by the caller, for example "Solid Dose Area". Two sites can have an area with the same name,
+# so the site is part of the answer. Only direct partOf links are stored; partOf+ follows the chain upward.
+PREFIX qms:  <http://example.org/qms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?unit ?site ?equipment ?recordId
+WHERE {
+  # GraphDB version: this line sets ?term, which the Python pipeline normally binds.
+  VALUES ?term { "Solid Dose Area" }
+  VALUES ?unitType { qms:Area qms:Line }
+  ?unitNode a ?unitType ;
+            rdfs:label ?unit .
+  FILTER(LCASE(STR(?unit)) = LCASE(STR(?term)))
+  ?unitNode qms:partOf+ ?siteNode .
+  ?siteNode a qms:Site ;
+            rdfs:label ?site .
+  ?eq qms:partOf+ ?unitNode ;
+      skos:prefLabel ?equipment .
+  ?dev a qms:Deviation ;
+       qms:aboutEquipment ?eq ;
+       qms:recordId ?recordId .
+}
+ORDER BY ?site ?equipment ?recordId

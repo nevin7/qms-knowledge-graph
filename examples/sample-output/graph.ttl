@@ -1,0 +1,567 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qms: <http://example.org/qms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/qms> a owl:Ontology ;
+    rdfs:label "Quality Records Demo Ontology (synthetic)" ;
+    rdfs:comment "A small ontology for linking quality records (deviations, investigations, CAPA) to products, equipment, and sites. All data in this project is synthetic." .
+
+qms:aboutEquipment a owl:ObjectProperty ;
+    rdfs:comment "A piece of equipment the record concerns. Only confirmed links are stored." ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range qms:Equipment .
+
+qms:aboutProduct a owl:ObjectProperty ;
+    rdfs:comment "A product the record concerns. Only confirmed links are stored." ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range qms:Product .
+
+qms:correctiveActionFor a owl:ObjectProperty ;
+    rdfs:domain qms:CAPA ;
+    rdfs:range qms:Investigation .
+
+qms:description a owl:DatatypeProperty ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range xsd:string .
+
+qms:equipmentAt a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain qms:Equipment ;
+    rdfs:range qms:Site .
+
+qms:equipmentType a owl:DatatypeProperty ;
+    rdfs:domain qms:Equipment ;
+    rdfs:range xsd:string .
+
+qms:investigates a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain qms:Investigation ;
+    rdfs:range qms:Deviation .
+
+qms:occurredAt a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:comment "The site where the record was raised." ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range qms:Site .
+
+qms:openedOn a owl:DatatypeProperty ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range xsd:date .
+
+qms:partOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:comment "Physical containment: equipment is part of a line or area, a line is part of an area, and an area is part of a site." .
+
+qms:recordId a owl:DatatypeProperty ;
+    rdfs:domain qms:QualityRecord ;
+    rdfs:range xsd:string .
+
+<http://example.org/qms/data/product/PRD-005> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "AVT-IA",
+        "airvent inhaler" ;
+    skos:prefLabel "Airvent inhalation aerosol" .
+
+<http://example.org/qms/data/record/CAPA-0001> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0001> ;
+    qms:description "Corrective action. Replace the feed frame and add it to the preventive maintenance schedule." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-02-02"^^xsd:date ;
+    qms:recordId "CAPA-0001" .
+
+<http://example.org/qms/data/record/CAPA-0002> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0002> ;
+    qms:description "Corrective action. Add an incoming powder flow check before compression." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-02-09"^^xsd:date ;
+    qms:recordId "CAPA-0002" .
+
+<http://example.org/qms/data/record/CAPA-0003> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0004> ;
+    qms:description "Corrective action. Lock the mixing time in the recipe so edits need approval." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-03-03"^^xsd:date ;
+    qms:recordId "CAPA-0003" .
+
+<http://example.org/qms/data/record/CAPA-0004> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0006> ;
+    qms:description "Corrective action. Reset the coating head gap and add a gap check to line startup." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-03-17"^^xsd:date ;
+    qms:recordId "CAPA-0004" .
+
+<http://example.org/qms/data/record/CAPA-0005> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0007> ;
+    qms:description "Corrective action. Add a steam pressure check before each sterilization cycle." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-03-31"^^xsd:date ;
+    qms:recordId "CAPA-0005" .
+
+<http://example.org/qms/data/record/CAPA-0006> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0008> ;
+    qms:description "Corrective action. Add a vibration setting check to the post-maintenance checklist." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-04-07"^^xsd:date ;
+    qms:recordId "CAPA-0006" .
+
+<http://example.org/qms/data/record/CAPA-0007> a qms:CAPA ;
+    qms:correctiveActionFor <http://example.org/qms/data/record/INV-0010> ;
+    qms:description "Corrective action. Service the air handling unit and review the alarm response procedure." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-04-29"^^xsd:date ;
+    qms:recordId "CAPA-0007" .
+
+<http://example.org/qms/data/record/CAPA-0008> a qms:CAPA ;
+    qms:description "Corrective action. Review the training record for the line operators." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-06-03"^^xsd:date ;
+    qms:recordId "CAPA-0008" .
+
+<http://example.org/qms/data/record/DEV-0007> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-AC07> ;
+    qms:description "Cycle did not reach set point. Load temperature did not reach the set point during a sterilization cycle in autoclave 7; cycle aborted." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-03-03"^^xsd:date ;
+    qms:recordId "DEV-0007" .
+
+<http://example.org/qms/data/record/DEV-0011> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-PL03> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-004> ;
+    qms:description "Coat weight variation. Adhesive coat weight varied along the roll from coating line 3; line stopped for inspection for analgex patch." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-04-01"^^xsd:date ;
+    qms:recordId "DEV-0011" .
+
+<http://example.org/qms/data/record/DEV-0014> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-AC07> ;
+    qms:description "Cycle did not reach set point. Load temperature did not reach the set point during a sterilization cycle in autoclav 7; cycle aborted." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-04-22"^^xsd:date ;
+    qms:recordId "DEV-0014" .
+
+<http://example.org/qms/data/record/DEV-0016> a qms:Deviation ;
+    qms:description "Assembly jam. Assembly jam on assembly line one; operator cleared the jam and logged it." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-05-06"^^xsd:date ;
+    qms:recordId "DEV-0016" .
+
+<http://example.org/qms/data/record/DEV-0017> a qms:Deviation ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-001> ;
+    qms:description "Coating variability (reference). Coating thickness variability seen on a small batch at Plant East. A similar issue was reported earlier on coat pan 2 at Plant North for cardiostat 20." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-05-13"^^xsd:date ;
+    qms:recordId "DEV-0017" .
+
+<http://example.org/qms/data/record/INV-0003> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-CP02> ;
+    qms:description "Investigation of DEV-0003. Findings on CP-02: Spray nozzle partially blocked; cleaning record under review." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0003> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-02-10"^^xsd:date ;
+    qms:recordId "INV-0003" .
+
+<http://example.org/qms/data/record/INV-0005> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-MV11> ;
+    qms:description "Investigation of DEV-0005. Findings on cream mixer 11: Temperature probe drift is being checked." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0005> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-02-24"^^xsd:date ;
+    qms:recordId "INV-0005" .
+
+<http://example.org/qms/data/record/INV-0009> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-TP04> ;
+    qms:description "Investigation of DEV-0010. Findings on press 4: Same feed frame wear as an earlier investigation." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0010> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-03-31"^^xsd:date ;
+    qms:recordId "INV-0009" .
+
+<http://example.org/qms/data/record/INV-0011> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-TP04> ;
+    qms:description "Investigation of DEV-0013. Findings on tab press 4: No equipment fault found; operator setup being reviewed." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0013> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-04-22"^^xsd:date ;
+    qms:recordId "INV-0011" .
+
+<http://example.org/qms/data/record/INV-0012> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-MV11> ;
+    qms:description "Investigation of DEV-0015. Findings on mixer 11: Paddle speed log shows a setpoint change." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0015> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-05-06"^^xsd:date ;
+    qms:recordId "INV-0012" .
+
+<http://example.org/qms/data/equipment/EQ-E-AC07> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:equipmentType "Autoclave" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-E-ST> ;
+    skos:altLabel "AC-07",
+        "autoclave 7" ;
+    skos:prefLabel "Autoclave AC-07" .
+
+<http://example.org/qms/data/hierarchy/AREA-E-SD> a qms:Area ;
+    rdfs:label "Solid Dose Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-E> .
+
+<http://example.org/qms/data/hierarchy/AREA-E-ST> a qms:Area ;
+    rdfs:label "Sterilization Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-E> .
+
+<http://example.org/qms/data/hierarchy/AREA-E-TD> a qms:Area ;
+    rdfs:label "Transdermal Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-E> .
+
+<http://example.org/qms/data/hierarchy/AREA-N-SS> a qms:Area ;
+    rdfs:label "Semi-Solids Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-N> .
+
+<http://example.org/qms/data/hierarchy/AREA-S-DA> a qms:Area ;
+    rdfs:label "Device Assembly Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-S> .
+
+<http://example.org/qms/data/hierarchy/AREA-S-SS> a qms:Area ;
+    rdfs:label "Semi-Solids Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-S> .
+
+<http://example.org/qms/data/hierarchy/AREA-S-ST> a qms:Area ;
+    rdfs:label "Sterilization Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-S> .
+
+<http://example.org/qms/data/hierarchy/LINE-E-CMP1> a qms:Line ;
+    rdfs:label "Compression Line 1" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-E-SD> .
+
+<http://example.org/qms/data/hierarchy/LINE-N-CMP1> a qms:Line ;
+    rdfs:label "Compression Line 1" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-N-SD> .
+
+<http://example.org/qms/data/hierarchy/LINE-N-CR1> a qms:Line ;
+    rdfs:label "Cream Line 1" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-N-SS> .
+
+<http://example.org/qms/data/hierarchy/LINE-N-CT1> a qms:Line ;
+    rdfs:label "Coating Line 1" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-N-SD> .
+
+<http://example.org/qms/data/hierarchy/LINE-S-CR1> a qms:Line ;
+    rdfs:label "Cream Line 1" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-S-SS> .
+
+<http://example.org/qms/data/record/DEV-0001> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-TP04> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-001> ;
+    qms:description "Tablet weight drift. Tablet weight drifted outside the in-process limit during a compression run on press 4; run paused and samples pulled for cardiostat 20." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-01-12"^^xsd:date ;
+    qms:recordId "DEV-0001" .
+
+<http://example.org/qms/data/record/DEV-0002> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-TP04> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-002> ;
+    qms:description "Tablet weight drift. Tablet weight drifted outside the in-process limit during a compression run on press 4; run paused and samples pulled for CST-40." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-01-19"^^xsd:date ;
+    qms:recordId "DEV-0002" .
+
+<http://example.org/qms/data/record/DEV-0003> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-CP02> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-001> ;
+    qms:description "Coating variability. Coating thickness variability observed in coat pan 2; spray rate adjusted for Cardiostat 20 mg tablet." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-02-03"^^xsd:date ;
+    qms:recordId "DEV-0003" .
+
+<http://example.org/qms/data/record/DEV-0004> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-MV11> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-003> ;
+    qms:description "Viscosity out of range. Viscosity was outside specification after mixing in mixer 11; batch placed on hold for Dermacalm 1% cream." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-02-10"^^xsd:date ;
+    qms:recordId "DEV-0004" .
+
+<http://example.org/qms/data/record/DEV-0005> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-MV11> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-003> ;
+    qms:description "Viscosity out of range. Viscosity was outside specification after mixing in mixer 11; batch placed on hold for dermacalm cream." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-02-17"^^xsd:date ;
+    qms:recordId "DEV-0005" .
+
+<http://example.org/qms/data/record/DEV-0006> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-PL03> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-004> ;
+    qms:description "Coat weight variation. Adhesive coat weight varied along the roll from patch line 3; line stopped for inspection for AGX-25." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-02-24"^^xsd:date ;
+    qms:recordId "DEV-0006" .
+
+<http://example.org/qms/data/record/DEV-0008> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-AC07> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-006> ;
+    qms:description "Cycle did not reach set point. Load temperature did not reach the set point during a sterilization cycle in AC-07; cycle aborted for alleject pen." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-03-10"^^xsd:date ;
+    qms:recordId "DEV-0008" .
+
+<http://example.org/qms/data/record/DEV-0009> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-AI01> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-006> ;
+    qms:description "Assembly jam. Assembly jam on assembly line 1; operator cleared the jam and logged it for ALJ-AI." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-03-17"^^xsd:date ;
+    qms:recordId "DEV-0009" .
+
+<http://example.org/qms/data/record/DEV-0010> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-TP04> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-001> ;
+    qms:description "Tablet weight drift. Tablet weight drifted outside the in-process limit during a compression run on tablet pres 4; run paused and samples pulled for cardiostat tabs." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-03-24"^^xsd:date ;
+    qms:recordId "DEV-0010" .
+
+<http://example.org/qms/data/record/DEV-0012> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-CP02> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-002> ;
+    qms:description "Coating variability. Coating thickness variability observed in coatin pan 2; spray rate adjusted for cardiostat 40." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-04-08"^^xsd:date ;
+    qms:recordId "DEV-0012" .
+
+<http://example.org/qms/data/record/DEV-0013> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-TP04> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-001> ;
+    qms:description "Tablet weight drift. Tablet weight drifted outside the in-process limit during a compression run on TP-04; run paused and samples pulled for CST-20." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-04-15"^^xsd:date ;
+    qms:recordId "DEV-0013" .
+
+<http://example.org/qms/data/record/DEV-0015> a qms:Deviation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-MV11> ;
+    qms:aboutProduct <http://example.org/qms/data/product/PRD-003> ;
+    qms:description "Viscosity out of range. Viscosity was outside specification after mixing in cream mixer 11; batch placed on hold for DCC-1." ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-04-29"^^xsd:date ;
+    qms:recordId "DEV-0015" .
+
+<http://example.org/qms/data/record/INV-0001> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-TP04> ;
+    qms:description "Investigation of DEV-0001. Findings on tab press 4: Worn feed frame suspected as the cause of the weight drift." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0001> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-01-19"^^xsd:date ;
+    qms:recordId "INV-0001" .
+
+<http://example.org/qms/data/record/INV-0002> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-TP04> ;
+    qms:description "Investigation of DEV-0002. Findings on TP-04: Powder flow change in the incoming lot is the leading explanation." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0002> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-01-26"^^xsd:date ;
+    qms:recordId "INV-0002" .
+
+<http://example.org/qms/data/record/INV-0004> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-MV11> ;
+    qms:description "Investigation of DEV-0004. Findings on MV-11: Mixing time was shortened by a recipe edit." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0004> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-02-17"^^xsd:date ;
+    qms:recordId "INV-0004" .
+
+<http://example.org/qms/data/record/INV-0006> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-E-PL03> ;
+    qms:description "Investigation of DEV-0006. Findings on PL-03: Coating head gap found outside tolerance." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0006> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:openedOn "2026-03-03"^^xsd:date ;
+    qms:recordId "INV-0006" .
+
+<http://example.org/qms/data/record/INV-0007> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-AC07> ;
+    qms:description "Investigation of DEV-0008. Findings on autoclave 7: Steam supply pressure was low during the cycle." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0008> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-03-17"^^xsd:date ;
+    qms:recordId "INV-0007" .
+
+<http://example.org/qms/data/record/INV-0008> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-S-AI01> ;
+    qms:description "Investigation of DEV-0009. Findings on AI-01: Feeder bowl vibration setting changed after maintenance." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0009> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:openedOn "2026-03-24"^^xsd:date ;
+    qms:recordId "INV-0008" .
+
+<http://example.org/qms/data/record/INV-0010> a qms:Investigation ;
+    qms:aboutEquipment <http://example.org/qms/data/equipment/EQ-N-CP02> ;
+    qms:description "Investigation of DEV-0012. Findings on coating pan 2: Air handling unit alarm was active during the run." ;
+    qms:investigates <http://example.org/qms/data/record/DEV-0012> ;
+    qms:occurredAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:openedOn "2026-04-15"^^xsd:date ;
+    qms:recordId "INV-0010" .
+
+<http://example.org/qms/data/equipment/EQ-S-AI01> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:equipmentType "Assembly line" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-S-DA> ;
+    skos:altLabel "AI-01",
+        "assembly line 1" ;
+    skos:prefLabel "Auto-Injector Assembly Line AI-01" .
+
+<http://example.org/qms/data/equipment/EQ-S-MV11> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:equipmentType "Mixing vessel" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/LINE-S-CR1> ;
+    skos:altLabel "MV-11",
+        "cream mixer 11",
+        "mixer 11" ;
+    skos:prefLabel "Mixing Vessel MV-11" .
+
+<http://example.org/qms/data/hierarchy/AREA-N-SD> a qms:Area ;
+    rdfs:label "Solid Dose Area" ;
+    qms:partOf <http://example.org/qms/data/site/SITE-N> .
+
+<http://example.org/qms/data/product/PRD-002> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "CST-40",
+        "cardiostat 40" ;
+    skos:prefLabel "Cardiostat 40 mg tablet" .
+
+<http://example.org/qms/data/product/PRD-004> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "AGX-25",
+        "analgex 25",
+        "analgex patch" ;
+    skos:prefLabel "Analgex 25 mcg/h transdermal patch" .
+
+<http://example.org/qms/data/product/PRD-006> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "ALJ-AI",
+        "alleject pen" ;
+    skos:prefLabel "Alleject auto-injector" .
+
+<http://example.org/qms/data/equipment/EQ-E-PL03> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:equipmentType "Patch coating line" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-E-TD> ;
+    skos:altLabel "PL-03",
+        "coating line 3",
+        "patch line 3" ;
+    skos:prefLabel "Patch Coating Line PL-03" .
+
+<http://example.org/qms/data/equipment/EQ-S-AC07> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-S> ;
+    qms:equipmentType "Autoclave" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/AREA-S-ST> ;
+    skos:altLabel "AC-07",
+        "autoclave 7" ;
+    skos:prefLabel "Autoclave AC-07" .
+
+<http://example.org/qms/data/product/PRD-003> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "DCC-1",
+        "dermacalm 1 percent",
+        "dermacalm cream" ;
+    skos:prefLabel "Dermacalm 1% cream" .
+
+<http://example.org/qms/data/equipment/EQ-E-TP04> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-E> ;
+    qms:equipmentType "Tablet press" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/LINE-E-CMP1> ;
+    skos:altLabel "TP-04",
+        "press 4",
+        "tab press 4" ;
+    skos:prefLabel "Tablet Press TP-04" .
+
+<http://example.org/qms/data/equipment/EQ-N-CP02> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:equipmentType "Coating pan" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/LINE-N-CT1> ;
+    skos:altLabel "CP-02",
+        "coat pan 2",
+        "coating pan 2" ;
+    skos:prefLabel "Coating Pan CP-02" .
+
+<http://example.org/qms/data/equipment/EQ-N-MV11> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:equipmentType "Mixing vessel" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/LINE-N-CR1> ;
+    skos:altLabel "MV-11",
+        "cream mixer 11",
+        "mixer 11" ;
+    skos:prefLabel "Mixing Vessel MV-11" .
+
+<http://example.org/qms/data/equipment/EQ-N-TP04> a qms:Equipment,
+        skos:Concept ;
+    qms:equipmentAt <http://example.org/qms/data/site/SITE-N> ;
+    qms:equipmentType "Tablet press" ;
+    qms:partOf <http://example.org/qms/data/hierarchy/LINE-N-CMP1> ;
+    skos:altLabel "TP-04",
+        "press 4",
+        "tab press 4" ;
+    skos:prefLabel "Tablet Press TP-04" .
+
+<http://example.org/qms/data/product/PRD-001> a qms:Product,
+        skos:Concept ;
+    skos:altLabel "CST-20",
+        "cardiostat 20",
+        "cardiostat tabs" ;
+    skos:prefLabel "Cardiostat 20 mg tablet" .
+
+qms:Line a owl:Class ;
+    rdfs:label "Production line" ;
+    owl:disjointWith qms:Site .
+
+qms:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:subClassOf skos:Concept .
+
+qms:Site a owl:Class ;
+    rdfs:label "Site" .
+
+qms:Area a owl:Class ;
+    rdfs:label "Area" ;
+    owl:disjointWith qms:Line,
+        qms:Site .
+
+qms:QualityRecord a owl:Class ;
+    rdfs:label "Quality record" .
+
+qms:CAPA a owl:Class ;
+    rdfs:label "Corrective and preventive action (CAPA)" ;
+    rdfs:subClassOf qms:QualityRecord .
+
+qms:Equipment a owl:Class ;
+    rdfs:label "Equipment" ;
+    rdfs:subClassOf skos:Concept .
+
+qms:Investigation a owl:Class ;
+    rdfs:label "Investigation" ;
+    rdfs:subClassOf qms:QualityRecord ;
+    owl:disjointWith qms:CAPA .
+
+<http://example.org/qms/data/site/SITE-S> a qms:Site ;
+    rdfs:label "Plant South" .
+
+qms:Deviation a owl:Class ;
+    rdfs:label "Deviation" ;
+    rdfs:subClassOf qms:QualityRecord ;
+    owl:disjointWith qms:CAPA,
+        qms:Investigation .
+
+<http://example.org/qms/data/site/SITE-E> a qms:Site ;
+    rdfs:label "Plant East" .
+
+<http://example.org/qms/data/site/SITE-N> a qms:Site ;
+    rdfs:label "Plant North" .
+

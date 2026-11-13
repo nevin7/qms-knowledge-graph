@@ -1,0 +1,167 @@
+{
+  "sites": [
+    {
+      "id": "SITE-N",
+      "label": "Plant North"
+    },
+    {
+      "id": "SITE-E",
+      "label": "Plant East"
+    },
+    {
+      "id": "SITE-S",
+      "label": "Plant South"
+    }
+  ],
+  "products": [
+    {
+      "id": "PRD-001",
+      "label": "Cardiostat 20 mg tablet",
+      "aliases": [
+        "CST-20",
+        "cardiostat 20",
+        "cardiostat tabs"
+      ]
+    },
+    {
+      "id": "PRD-002",
+      "label": "Cardiostat 40 mg tablet",
+      "aliases": [
+        "CST-40",
+        "cardiostat 40"
+      ]
+    },
+    {
+      "id": "PRD-003",
+      "label": "Dermacalm 1% cream",
+      "aliases": [
+        "DCC-1",
+        "dermacalm cream",
+        "dermacalm 1 percent"
+      ]
+    },
+    {
+      "id": "PRD-004",
+      "label": "Analgex 25 mcg/h transdermal patch",
+      "aliases": [
+        "AGX-25",
+        "analgex patch",
+        "analgex 25"
+      ]
+    },
+    {
+      "id": "PRD-005",
+      "label": "Airvent inhalation aerosol",
+      "aliases": [
+        "AVT-IA",
+        "airvent inhaler"
+      ]
+    },
+    {
+      "id": "PRD-006",
+      "label": "Alleject auto-injector",
+      "aliases": [
+        "ALJ-AI",
+        "alleject pen"
+      ]
+    }
+  ],
+  "equipment": [
+    {
+      "id": "EQ-N-TP04",
+      "label": "Tablet Press TP-04",
+      "site": "SITE-N",
+      "type": "Tablet press",
+      "aliases": [
+        "TP-04",
+        "press 4",
+        "tab press 4"
+      ]
+    },
+    {
+      "id": "EQ-N-CP02",
+      "label": "Coating Pan CP-02",
+      "site": "SITE-N",
+      "type": "Coating pan",
+      "aliases": [
+        "CP-02",
+        "coat pan 2",
+        "coating pan 2"
+      ]
+    },
+    {
+      "id": "EQ-N-MV11",
+      "label": "Mixing Vessel MV-11",
+      "site": "SITE-N",
+      "type": "Mixing vessel",
+      "aliases": [
+        "MV-11",
+        "mixer 11",
+        "cream mixer 11"
+      ]
+    },
+    {
+      "id": "EQ-E-TP04",
+      "label": "Tablet Press TP-04",
+      "site": "SITE-E",
+      "type": "Tablet press",
+      "aliases": [
+        "TP-04",
+        "press 4",
+        "tab press 4"
+      ]
+    },
+    {
+      "id": "EQ-E-PL03",
+      "label": "Patch Coating Line PL-03",
+      "site": "SITE-E",
+      "type": "Patch coating line",
+      "aliases": [
+        "PL-03",
+        "patch line 3",
+        "coating line 3"
+      ]
+    },
+    {
+      "id": "EQ-E-AC07",
+      "label": "Autoclave AC-07",
+      "site": "SITE-E",
+      "type": "Autoclave",
+      "aliases": [
+        "AC-07",
+        "autoclave 7"
+      ]
+    },
+    {
+      "id": "EQ-S-MV11",
+      "label": "Mixing Vessel MV-11",
+      "site": "SITE-S",
+      "type": "Mixing vessel",
+      "aliases": [
+        "MV-11",
+        "mixer 11",
+        "cream mixer 11"
+      ]
+    },
+    {
+      "id": "EQ-S-AC07",
+      "label": "Autoclave AC-07",
+      "site": "SITE-S",
+      "type": "Autoclave",
+      "aliases": [
+        "AC-07",
+        "autoclave 7"
+      ]
+    },
+    {
+      "id": "EQ-S-AI01",
+      "label": "Auto-Injector Assembly Line AI-01",
+      "site": "SITE-S",
+      "type": "Assembly line",
+      "aliases": [
+        "AI-01",
+        "assembly line 1"
+      ]
+    }
+  ]
+}

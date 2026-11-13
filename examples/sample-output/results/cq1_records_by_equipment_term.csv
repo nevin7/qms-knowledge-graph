@@ -1,0 +1,11 @@
+equipment,site,recordId,kind
+Tablet Press TP-04,Plant North,CAPA-0001,CAPA
+Tablet Press TP-04,Plant East,CAPA-0002,CAPA
+Tablet Press TP-04,Plant North,DEV-0001,Deviation
+Tablet Press TP-04,Plant East,DEV-0002,Deviation
+Tablet Press TP-04,Plant North,DEV-0010,Deviation
+Tablet Press TP-04,Plant East,DEV-0013,Deviation
+Tablet Press TP-04,Plant North,INV-0001,Investigation
+Tablet Press TP-04,Plant East,INV-0002,Investigation
+Tablet Press TP-04,Plant North,INV-0009,Investigation
+Tablet Press TP-04,Plant East,INV-0011,Investigation

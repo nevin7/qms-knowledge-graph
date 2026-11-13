@@ -1,0 +1,51 @@
+@prefix qms:  <http://example.org/qms#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+qms:QualityRecordShape a sh:NodeShape ;
+    sh:targetClass qms:QualityRecord ;
+    sh:property [ sh:path qms:recordId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                  sh:message "Every quality record needs exactly one record ID." ] ;
+    sh:property [ sh:path qms:openedOn ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ;
+                  sh:message "Every quality record needs exactly one opened-on date." ] ;
+    sh:property [ sh:path qms:occurredAt ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qms:Site ;
+                  sh:message "Every quality record must be tied to exactly one site." ] .
+
+qms:InvestigationShape a sh:NodeShape ;
+    sh:targetClass qms:Investigation ;
+    sh:property [ sh:path qms:investigates ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qms:Deviation ;
+                  sh:message "Every investigation must investigate exactly one deviation." ] .
+
+qms:CAPAShape a sh:NodeShape ;
+    sh:targetClass qms:CAPA ;
+    sh:property [ sh:path qms:correctiveActionFor ; sh:minCount 1 ; sh:class qms:Investigation ;
+                  sh:message "Every CAPA must point to at least one investigation." ] .
+
+qms:EquipmentShape a sh:NodeShape ;
+    sh:targetClass qms:Equipment ;
+    sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Equipment needs exactly one preferred label." ] ;
+    sh:property [ sh:path qms:equipmentAt ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qms:Site ;
+                  sh:message "Equipment must be located at exactly one site." ] .
+
+qms:ProductShape a sh:NodeShape ;
+    sh:targetClass qms:Product ;
+    sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Products need exactly one preferred label." ] .
+
+qms:AreaShape a sh:NodeShape ;
+    sh:targetClass qms:Area ;
+    sh:property [ sh:path qms:partOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qms:Site ;
+                  sh:message "Every area must be part of exactly one site." ] .
+
+qms:LineShape a sh:NodeShape ;
+    sh:targetClass qms:Line ;
+    sh:property [ sh:path qms:partOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qms:Area ;
+                  sh:message "Every production line must be part of exactly one area." ] .
+
+qms:EquipmentPlacementShape a sh:NodeShape ;
+    sh:targetClass qms:Equipment ;
+    sh:property [ sh:path qms:partOf ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:or ( [ sh:class qms:Line ] [ sh:class qms:Area ] ) ;
+                  sh:message "Equipment must be part of exactly one parent, and that parent must be a line or an area." ] .

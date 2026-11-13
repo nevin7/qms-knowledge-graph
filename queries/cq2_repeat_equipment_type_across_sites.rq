@@ -1,0 +1,13 @@
+# Competency question 2: which kinds of equipment have deviations at more than one site?
+PREFIX qms: <http://example.org/qms#>
+
+SELECT ?equipmentType (COUNT(DISTINCT ?site) AS ?sites) (COUNT(DISTINCT ?dev) AS ?deviations)
+WHERE {
+  ?dev a qms:Deviation ;
+       qms:aboutEquipment ?eq ;
+       qms:occurredAt ?site .
+  ?eq qms:equipmentType ?equipmentType .
+}
+GROUP BY ?equipmentType
+HAVING (COUNT(DISTINCT ?site) > 1)
+ORDER BY DESC(?deviations) ?equipmentType

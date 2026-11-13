@@ -1,0 +1,24 @@
+# Competency question 1: show me every record tied to a piece of equipment, whatever name people used for it.
+# ?term is bound by the caller. Deviations and investigations whose text names the equipment are tagged directly.
+# The path also reaches CAPA, whose text names no equipment, through the investigation and deviation.
+PREFIX qms:  <http://example.org/qms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?equipment ?site ?recordId ?kind
+WHERE {
+  # GraphDB version: this line sets ?term, which the Python pipeline normally binds.
+  VALUES ?term { "press 4" }
+  ?eq a qms:Equipment ;
+      (skos:prefLabel|skos:altLabel) ?label ;
+      skos:prefLabel ?equipment .
+  FILTER(LCASE(STR(?label)) = LCASE(STR(?term)))
+  ?dev qms:aboutEquipment ?eq .
+  ?rec (qms:correctiveActionFor/qms:investigates | qms:investigates)? ?dev ;
+       qms:recordId ?recordId ;
+       qms:occurredAt ?siteNode ;
+       a ?type .
+  ?siteNode rdfs:label ?site .
+  VALUES (?type ?kind) { (qms:Deviation "Deviation") (qms:Investigation "Investigation") (qms:CAPA "CAPA") }
+}
+ORDER BY ?equipment ?recordId

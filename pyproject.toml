@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qms-knowledge-graph"
+version = "0.1.0"
+description = "Synthetic demo: link quality records to products and equipment in a knowledge graph, with tag suggestions, human review, SHACL validation, and SPARQL competency queries."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["rdflib>=7", "pyshacl>=0.26"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+qmsgraph = "qmsgraph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
