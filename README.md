@@ -231,6 +231,13 @@ python -m pytest -q
 Output in `out/` (ignored by git): `graph.ttl`, `review_queue.csv`, `validation_report.txt`, and `results/*.csv`.
 `python scripts/make_data.py` regenerates the synthetic data and hierarchy.
 
+## Tools
+
+- **Python 3.12** with `rdflib` (RDF and SPARQL), `pyshacl` (SHACL validation), and `pytest`. GitHub Actions runs the tests on every push.
+- **GraphDB Free** and **Protégé** for loading and exploring the graph. The screenshots in `examples/` are from GraphDB.
+- **Mermaid** for the conceptual diagram, **PyCharm** for editing, and **macOS** for development.
+- Built with help from **Claude** (Anthropic). The code was run and tested locally, and the output was loaded into GraphDB and Protégé.
+
 ## Limitations
 
 - Synthetic data of 37 records, not a production system and not enterprise scale.
