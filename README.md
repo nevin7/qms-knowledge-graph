@@ -182,6 +182,8 @@ to an investigation that does not exist, so you can see the validation catch it.
 4. **Validate** it with SHACL.
 5. **Run the competency queries.**
 
+A tag is a link between a piece of text and a vocabulary entry. For example, `DEV-0010 aboutEquipment EQ-N-TP04` is stored in the graph as one statement, so a query for `press 4` can find the record even though it never uses the official name.
+
 What the sample run shows:
 
 - Typos (`tablet pres 4`) become fuzzy suggestions that go to a person for review.
@@ -246,6 +248,7 @@ Output in `out/` (ignored by git): `graph.ttl`, `review_queue.csv`, `validation_
 - The sample review decisions are simulated.
 - The hierarchy is a small invented example loaded from a JSON file, not from a source system.
 - No ETL, access control, or audit trail beyond the review queue CSV.
+- Tagging runs here as a batch script with simulated review. A production version would more likely run as a service, on record changes or on a schedule, with a review screen and a stored record of who confirmed each link.
 - Not validated for use in a regulated environment.
 
 ## Layout
