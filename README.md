@@ -207,6 +207,8 @@ The queries in [`examples/graphdb-queries/`](examples/graphdb-queries/) are copi
 with one added line, `VALUES ?term { ... }`, because the Python pipeline normally supplies that value.
 They return the same row counts as the pipeline.
 
+The ontology, vocabulary, and graph are plain Turtle (RDF) files, so they should load into other RDF triple stores as well. GraphDB is the only one tested here. A property-graph database such as Neo4j would need a conversion step.
+
 ![Equipment hierarchy in GraphDB](examples/graphdb-equipment-hierarchy.png)
 
 *Equipment hierarchy in GraphDB: Tablet Press TP-04 is part of Compression Line 1, which is part of the Solid Dose Area
