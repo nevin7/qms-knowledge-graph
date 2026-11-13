@@ -234,6 +234,7 @@ Output in `out/` (ignored by git): `graph.ttl`, `review_queue.csv`, `validation_
 ## Limitations
 
 - Synthetic data of 37 records, not a production system and not enterprise scale.
+- Only three record types (deviation, investigation, and CAPA). A real quality management system has more, such as incidents.
 - Matching is rule-based string matching with a similarity score, which is deliberately simple and explainable.
 - The sample review decisions are simulated.
 - The hierarchy is a small invented example loaded from a JSON file, not from a source system.
