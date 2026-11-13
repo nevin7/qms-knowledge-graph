@@ -1,6 +1,6 @@
-# qms-knowledge-graph
+# QMS Knowledge Graph
 
-A small, **fully synthetic** knowledge graph for a problem that comes up in regulated manufacturing: quality
+A small, **fully synthetic** knowledge graph for a problem that comes up in pharmaceutical manufacturing: quality
 records (deviations, investigations, corrective actions) name the same product or machine in different ways,
 so records that belong together are hard to find.
 
